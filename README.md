@@ -2,9 +2,7 @@
 
 Code practice for the tutorial of imooc Java 2020(已更新至2021版)
 
-按每章节分配一个Module进行分类，
-
-每个Module中src为习题代码文件，doc为笔记文件（markdown格式）
-
-学习参考用，欢迎提出建议。
-
+- 已按每章节一个Module进行整理
+- 每个Module中src文件夹为习题代码，doc文件夹为学习笔记(markdown格式)
+- 习题代码为自己手写，不一定为最优解，欢迎pull request优化
+- 学习交流进步用，错漏之处请多包涵
