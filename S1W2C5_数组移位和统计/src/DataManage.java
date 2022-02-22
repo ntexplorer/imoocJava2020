@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -6,43 +7,72 @@ import java.util.Scanner;
  */
 public class DataManage {
     public static void main(String[] args) {
-//        DataManage dm = new DataManage();
-//        int[] a = dm.insertData();
-//        dm.showData(a, a.length);
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("请输入要插入的数据：");
-//        int n = sc.nextInt();
-//        System.out.println("请输入要插入的位置：");
-//        int k = sc.nextInt();
-//        dm.insetAtArray(a, n, k);
-//        dm.showData(a, a.length);
-//        dm.divideByThree(a);
         DataManage dm = new DataManage();
         Scanner sc = new Scanner(System.in);
         int input;
+        int[] a = null;
+        //n插入的数据，k插入的位置
+        int n, k;
         while (true) {
             dm.notice();
             System.out.println("请输入对应的数字进行操作：");
-            input = sc.nextInt();
+            try {
+                input = sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("输入的格式有误");
+                sc.next();
+                continue;
+            }
             if (input == 0) {
                 System.out.println("退出程序");
                 break;
             }
             switch (input) {
                 case 1: {
-                    System.out.println("插入数据");
+                    a = dm.insertData();
+                    System.out.println("数组元素为:");
+                    dm.showData(a, a.length);
                     break;
                 }
                 case 2: {
-                    System.out.println("显示数据");
+                    if (a != null) {
+                        System.out.println("数组元素为：");
+                        if (a[a.length - 1] == 0) {
+                            //如果数组最后一个元素为0，还没有插入数据，不显示最后一个元素
+                            dm.showData(a, a.length - 1);
+
+                        } else {
+                            dm.showData(a, a.length);
+                        }
+                    } else {
+                        System.out.println("还未在数组中插入数据，请重新选择操作！");
+                    }
                     break;
                 }
                 case 3: {
-                    System.out.println("插入指定数据");
+                    if (a != null) {
+                        System.out.println("请输入要插入的数据：");
+                        try {
+                            n = sc.nextInt();
+                            System.out.println("请输入要插入的位置：");
+                            k = sc.nextInt();
+                        } catch (InputMismatchException e) {
+                            System.out.println("输入的数据格式有误，不能有非数字！");
+                            sc.next();
+                            break;
+                        }
+                        dm.insetAtArray(a, n, k - 1);
+                    } else {
+                        System.out.println("还未在数组中插入数据，请重新选择操作！");
+                    }
                     break;
                 }
                 case 4: {
-                    System.out.println("查询数据");
+                    if (a != null) {
+                        dm.divideByThree(a);
+                    } else {
+                        System.out.println("还未在数组中插入数据，请重新选择操作！");
+                    }
                     break;
                 }
                 default: {
