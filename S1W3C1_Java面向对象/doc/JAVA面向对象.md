@@ -23,7 +23,7 @@
     - String类型默认值`null`
     - int类型默认值`0`
     - double类型默认值`0.0`
-- 方法可重载（见 [JAVA方法](https://www.notion.so/JAVA-792ca8f2434a4ae5976c01b1f5e69517) ）
+- 方法可重载（见 [JAVA方法]）
 
 # 单一职责原则
 
@@ -42,7 +42,7 @@
     - 实例化对象：开辟内存堆空间
 - JAVA程序-JVM-操作系统
 
-  ![Untitled](JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%20df9bd/Untitled.png)
+  ![Untitled](JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/Untitled.png)
 
     - 内存分配由JVM执行
 
@@ -60,24 +60,24 @@
 
 ## 执行流程
 
-![Untitled](JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%20df9bd/Untitled%201.png)
+![Untitled](JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/Untitled%201.png)
 
 1. JVM自动寻找main方法，执行第一句代码，创建一个Cat类的实例one，在栈中分配一块内存，存放一个指向堆区对象的地址譬如0x111111
 2. 创建一个double类型的变量wh，由于是基础数据类型，直接在栈中存放double对应的值200
 
-   ![Untitled](JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%20df9bd/Untitled%202.png)
+   ![Untitled](JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/Untitled%202.png)
 
 3. 当调用one对象的run方法，并以wh为参数传入方法时，JVM检测到方法参数weight，作为方法局部变量，也会放入栈中并将wh的值200复制给weight
 
-   ![Untitled](JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%20df9bd/Untitled%203.png)
+   ![Untitled](JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/Untitled%203.png)
 
 4. 当完成run方法调用后，立即释放局部变量weight所占用的栈空间
 
-   ![Untitled](JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%20df9bd/Untitled%204.png)
+   ![Untitled](JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/Untitled%204.png)
 
 5. main方法运行结束，立即释放栈中one，wh的空间，而堆中对象空间，则会当确定无引用指向后，由垃圾回收机制进行回收，不会立即释放资源
 
-   ![Untitled](JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%20df9bd/Untitled%205.png)
+   ![Untitled](JAVA%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/Untitled%205.png)
 
 ## 注意事项
 
