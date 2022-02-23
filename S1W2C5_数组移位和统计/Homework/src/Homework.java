@@ -9,9 +9,8 @@ public class Homework {
         Homework hw = new Homework();
         Scanner sc = new Scanner(System.in);
         int input, index;
-        float newScore;
+        float newScore, average;
         float[] f = null;
-        float average;
         while (true) {
             hw.displayMenu();
             System.out.println("请输入对应的数字进行操作：");
@@ -104,34 +103,44 @@ public class Homework {
     }
 
     public float[] initScore() {
-        float[] f = new float[5];
-        int scoreInputNumber;
         Scanner sc = new Scanner(System.in);
+        int arrayNum;
+        int scoreInputNumber;
+
         while (true) {
             System.out.println("请输入要存储的数学成绩的数量：");
             try {
                 scoreInputNumber = sc.nextInt();
-                if (scoreInputNumber <= 5 && scoreInputNumber > 0) {
-                    for (int i = 0; i < scoreInputNumber; i++) {
-                        System.out.println("请输入第" + (i + 1) + "个数据");
-                        f[i] = sc.nextFloat();
-                    }
-                    System.out.println("成绩为：");
-                    for (float v : f) {
-                        System.out.print(v + "   ");
-                    }
-                    System.out.println();
-                } else {
-                    System.out.println("成绩数量超出范围，请重试");
-                }
-                break;
             } catch (InputMismatchException e) {
                 System.out.println("输入数据类型错误，请重新输入");
                 sc.next();
+                continue;
             }
+            if (scoreInputNumber > 0) {
+                float[] f = new float[scoreInputNumber];
+                for (int i = 0; i < scoreInputNumber; i++) {
+                    System.out.println("请输入第" + (i + 1) + "个数据");
+                    try {
+                        f[i] = sc.nextFloat();
+                    } catch (InputMismatchException e) {
+                        System.out.println("输入数据类型错误，请重新输入");
+                        sc.next();
+                        i--;
+                    }
+                }
+                System.out.println("成绩为：");
+                for (float v : f) {
+                    System.out.print(v + "   ");
+                }
+                System.out.println();
+                return f;
+            } else {
+                System.out.println("成绩数量超出范围，请重试");
+            }
+            break;
 
         }
-        return f;
+        return null;
     }
 
     public float average(float[] f) {

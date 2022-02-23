@@ -5,7 +5,9 @@ public class CatTest {
     public static void main(String[] args) {
         //对象实例化操作
         Cat one = new Cat();
-        Cat two = new Cat();
+//        Cat two = new Cat();
+        //此时one和two指向同一个内存空间
+        Cat two = one;
         one.eat();
         one.run();
         System.out.println();
